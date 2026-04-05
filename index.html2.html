@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile Fiqri</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    nav {
+      background: rgba(0,0,0,0.6);
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      color: white;
+    }
+
+    header img {
+      width: 140px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid white;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .card {
+      background: #1e293b;
+      border: none;
+      border-radius: 15px;
+      transition: 0.3s;
+      color: white;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .badge {
+      margin: 5px;
+      padding: 10px;
+    }
+
+    footer {
+      background: #020617;
+    }
+
+    .btn-custom {
+      background: #6366f1;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark fixed-top">
+  <div class="container">
+    <span class="navbar-brand">Fiqri</span>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <div data-aos="zoom-in">
+    <img src="https://via.placeholder.com/150">
+    <h1>Muhammad Fiqri Rahmatdhani</h1>
+    <p>NIM: 2211102009</p>
+    <p>Informatics Engineering Student 🚀</p>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="container" data-aos="fade-up">
+  <h2>About Me</h2>
+  <p>
+    I am Muhammad Fiqri Rahmatdhani, a 21-year-old undergraduate student 
+    at Telkom University Purwokerto. I am passionate about digital marketing, 
+    advertising, and communication technology.
+  </p>
+</section>
+
+<!-- EDUCATION -->
+<section class="container" data-aos="fade-right">
+  <h2>Education</h2>
+  <ul>
+    <li>S1 Informatics Engineering - Telkom University Purwokerto (2022 - Now)</li>
+  </ul>
+</section>
+
+<!-- SKILLS -->
+<section class="container" data-aos="fade-left">
+  <h2>Skills</h2>
+  <span class="badge bg-primary">Communication</span>
+  <span class="badge bg-success">Negotiation</span>
+  <span class="badge bg-warning">Problem Solving</span>
+  <span class="badge bg-info">Time Management</span>
+  <span class="badge bg-secondary">Organization</span>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="container" data-aos="zoom-in">
+  <h2>Experience</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h5>Coach Badminton SBC Club</h5>
+        <p>Agustus 2024 - Maret 2025</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h5>Advertising Herbatinos</h5>
+        <p>Januari 2025 - Oktober 2025</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h5>Head Coach PB Senja</h5>
+        <p>Oktober 2025 - Now</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- API SECTION -->
+<section class="container text-center" data-aos="fade-up">
+  <h2>Daily Motivation</h2>
+  <p id="quote">Loading...</p>
+  <button class="btn btn-custom mt-3" onclick="getQuote()">New Quote</button>
+</section>
+
+<!-- CONTACT -->
+<section class="container text-center" data-aos="fade-up">
+  <h2>Contact</h2>
+  <p>Email: 2211102009@ittelkom-pwt.ac.id</p>
+  <p>Phone: 083116909614</p>
+</section>
+
+<footer class="text-center p-3">
+  <p>© 2026 Muhammad Fiqri Rahmatdhani</p>
+</footer>
+
+<!-- SCRIPT -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  AOS.init();
+
+  function getQuote() {
+    fetch("https://api.quotable.io/random")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("quote").innerHTML =
+          `"${data.content}" - ${data.author}`;
+      })
+      .catch(() => {
+        document.getElementById("quote").innerHTML = "Gagal mengambil quote";
+      });
+  }
+
+  getQuote();
+</script>
+
+</body>
+</html>
